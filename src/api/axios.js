@@ -4,6 +4,8 @@ const coinApi = axios.create({
   baseURL: `https://rest.coinapi.io/v1`,
 });
 
+
+
 export const getMarketPairs = async ({
   baseAsset,
   quoteAsset,
@@ -32,3 +34,14 @@ export const getMarketPairs = async ({
     throw new Error("Failed to Fetch Data");
   }
 };
+
+export const getCryptoPrices = async ()=>{
+  try {
+    const response = await axios.get('https://api.coingecko.com/api/v3/exchange_rates');
+    return response.data
+
+  }catch(err){
+    console.log(err)
+  }
+};
+

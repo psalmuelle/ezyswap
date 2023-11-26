@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { getMarketPairs } from "../api/marketPairsApi";
+import { getMarketPairs } from "../api/axios";
 
 import Loader from "./Loader";
 import MarketPairChart from "./MarketPairChart";

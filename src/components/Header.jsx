@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Image from "./Image";
 import GoogleButton from "react-google-button";
-import { Link } from "react-router-dom";
 import Hamburger from "hamburger-react";
 
 import userIcon from "../assets/user-icon.png";
 import logo from "../assets/logo.svg";
 import { UserAuth } from "../context/AuthContext";
+
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -36,24 +36,24 @@ const Header = () => {
   // const user = false;
 
   return (
-    <header className='bg-[#383838]/50  px-[2%] py-2 flex justify-between items-center relative text-sm text-white'>
-      <Link to='/' className='flex items-center w-fit'>
+    <header className='bg-primary  px-[2%] py-2 flex justify-between items-center relative text-sm text-white'>
+      <a href='/' className='flex items-center w-fit '>
         <Image src={logo} width={48} height={48} className='' />
         <p className='font-medium text-base'>
-          EZY<span className='text-primary font-bold'>SWAP</span>
+          EZY<span className='font-bold'>SWAP</span>
         </p>
-      </Link>
+      </a>
 
       <nav className='flex justify-between items-center max-w-xs w-full max-md:hidden'>
-        <Link to={"#"} className='block hover:border-b'>
+        <a href={"#"} className='block hover:border-b'>
           Market Pairs
-        </Link>
-        <Link to={"#"} className='block hover:border-b'>
+        </a>
+        <a href={"#"} className='block hover:border-b'>
           Exchange Rates
-        </Link>
-        <Link to={"#"} className='block hover:border-b'>
+        </a>
+        <a href={"#"} className='block hover:border-b'>
           About
-        </Link>
+        </a>
       </nav>
 
       <div className='max-sm:hidden'>
@@ -87,7 +87,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {openMenu && (
-        <div className='absolute top-full left-0 bg-black border-t w-full flex flex-col gap-5 items-center py-8 z-50'>
+        <div className='absolute top-full left-0 bg-primary border-t w-full flex flex-col gap-5 items-center py-8 z-50'>
           {user?.displayName && (
             <div className='flex justify-center items-center gap-2 px-3'>
               <Image
@@ -98,15 +98,15 @@ const Header = () => {
               <p>Hey {user?.displayName}! 👋</p>
             </div>
           )}
-          <Link to={"#"} className='block hover:border-b'>
+          <a href={"#"} className='block hover:border-b'>
             Market Pairs
-          </Link>
-          <Link to={"#"} className='block hover:border-b'>
+          </a>
+          <a href={"#"} className='block hover:border-b'>
             Exchange Rates
-          </Link>
-          <Link to={"#"} className='block hover:border-b'>
+          </a>
+          <a href={"#"} className='block hover:border-b'>
             About
-          </Link>
+          </a>
           {!user?.displayName && (
             <GoogleButton
               label='Sign In With Google'
