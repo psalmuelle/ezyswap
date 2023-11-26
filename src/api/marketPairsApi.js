@@ -25,8 +25,10 @@ export const getMarketPairs = async ({
         },
       }
     );
+    console.log(response);
     return response.data;
   } catch (error) {
+    console.log(error);
     throw new Error("Failed to Fetch Data");
   }
 };
