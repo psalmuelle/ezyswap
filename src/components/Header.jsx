@@ -22,11 +22,11 @@ const Header = () => {
 
   
   return (
-    <header className='bg-black px-[2%] py-2 flex justify-between items-center relative text-sm'>
+    <header className='bg-[#383838]/50  px-[2%] py-2 flex justify-between items-center relative text-sm text-white'>
       <Link to='/' className='flex items-center w-fit'>
         <Image src={logo} width={48} height={48} className='' />
-        <p className='font-medium'>
-          EZY<span className='text-primary'>SWAP</span>
+        <p className='font-medium text-base'>
+          EZY<span className='text-primary font-bold'>SWAP</span>
         </p>
       </Link>
 
@@ -59,7 +59,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {openMenu && (
-        <div className='absolute top-full left-0 bg-black border-t w-full flex flex-col gap-5 items-center py-8'>
+        <div className='absolute top-full left-0 bg-black border-t w-full flex flex-col gap-5 items-center py-8 z-50'>
           {user && (
             <div className='flex justify-center items-center gap-2 px-3'>
               <Image src={userIcon} alt={"Dave"} className='w-6 h-6' />
