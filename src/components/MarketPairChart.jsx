@@ -9,10 +9,17 @@ import {
   LineChart,
 } from "recharts";
 
+
 const MarketPairChart = ({ data }) => {
   return (
     <ResponsiveContainer width='100%' height='100%'>
-      <LineChart width={"100%"} height={"100%"} data={data}>
+      <LineChart width={"100%"} height={"100%"} data={data} margin={{
+            top: 10,
+            right: 30,
+            left: 20,
+            bottom: 10,
+          }} 
+          >
         <XAxis />
         <YAxis domain={["rate_low", "rate_high"]} />
         <Tooltip />

@@ -20,7 +20,14 @@ const getIsoTime = () => {
   };
 };
 
+
+
 const MarketPairWidget = ({ baseAsset, quoteAsset }) => {
+
+  
+  useEffect(()=> {
+  }, [])
+  
   const {
     data: marketpair,
     isLoading,
@@ -34,7 +41,8 @@ const MarketPairWidget = ({ baseAsset, quoteAsset }) => {
         timeStart: getIsoTime().timeStart,
         timeEnd: getIsoTime().timeEnd,
       }),
-    refetchInterval: 60000,
+      refetchOnMount: false
+   // refetchInterval: 60000,
   });
 
   const currentPrice = marketpair && marketpair[marketpair?.length-1]['rate_close'];
@@ -52,12 +60,12 @@ const MarketPairWidget = ({ baseAsset, quoteAsset }) => {
   }
 
   return (
-    <div className='w-full h-full'>
+    <div className='mx-auto w-[90%] h-full'>
       <h1 className="text-xl font-medium  text-left my-2">
         Pair: <span className="font-semibold">{baseAsset} / {quoteAsset}</span> 
       </h1>
       <p className="text-lg text-left">Current Price: <span className="font-bold">{currentPrice}</span></p>
-      <div className="h-96">
+      <div className="h-[500px]">
       <MarketPairChart data={marketpair} />
       </div>
     </div>

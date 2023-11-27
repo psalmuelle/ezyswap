@@ -13,7 +13,7 @@ const ConverterSection = ({
     options && options.filter((option) => option.type === type);
 
   return (
-    <div className='w-full bg-primary text-white max-w-2xl mx-auto py-4 px-4 rounded-lg'>
+    <div className='w-full bg-primary/90 text-white max-w-2xl mx-auto py-4 px-4 rounded-lg'>
       <div className='flex justify-between items-center mb-2'>
         <p>{title}</p>
       </div>
@@ -62,8 +62,7 @@ const Converter = () => {
     toAmount = calcExchangeRate().toExchangeRate * fromAmount;
   } else {
     toAmount = amount;
-    fromAmount = calcExchangeRate().toExchangeRate / toAmount;
-    console.log(fromAmount);
+    fromAmount = calcExchangeRate().fromExchangeRate * toAmount;
   }
 
   function handleFromAmountChange(e) {

@@ -41,7 +41,7 @@ function Home() {
           <MarketPairTab />
         </section>
 
-        <section className='bg-gray-50 py-10  mx-auto text-center'>
+        <section className='py-10  mx-auto text-center'>
           <hgroup className='mb-8 max-w-2xl mx-auto'>
             <h1 className='text-4xl font-bold'>
               Convert Cryptocurrency to Fiat Currency
