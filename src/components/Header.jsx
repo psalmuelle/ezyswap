@@ -7,7 +7,6 @@ import userIcon from "../assets/user-icon.png";
 import logo from "../assets/logo.svg";
 import { UserAuth } from "../context/AuthContext";
 
-
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
 

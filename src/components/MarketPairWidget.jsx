@@ -1,51 +1,45 @@
-import React, { useEffect, useState } from "react";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
 import { getMarketPairs } from "../api/axios";
+import Image from "./Image";
 
 import Loader from "./Loader";
 import MarketPairChart from "./MarketPairChart";
 
-// Function To Get ISO Time Format
-const getIsoTime = () => {
-  const currentDate = new Date();
-  const twentyFourHoursAgo = new Date(
-    currentDate.getTime() - 12 * 60 * 60 * 1000
-  );
+// Function to format the API data
+function formatSparkline(prices) {
+  const formattedPrices =
+    prices &&
+    prices[0].sparkline_in_7d.price?.map((val, index) => {
+      return {
+        name: index,
+        price: val,
+      };
+    });
+  return formattedPrices;
+}
 
-  const timeStart = twentyFourHoursAgo.toISOString();
-  const timeEnd = currentDate.toISOString();
-  return {
-    timeStart,
-    timeEnd,
-  };
-};
-
-
-
-const MarketPairWidget = ({ baseAsset, quoteAsset }) => {
-
-  
-  useEffect(()=> {
-  }, [])
-  
+const MarketPairWidget = ({ baseAsset, tabId }) => {
   const {
     data: marketpair,
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["marketpair"],
+    queryKey: ["marketpair", tabId],
     queryFn: () =>
       getMarketPairs({
         baseAsset: baseAsset,
-        quoteAsset: quoteAsset,
-        timeStart: getIsoTime().timeStart,
-        timeEnd: getIsoTime().timeEnd,
       }),
-      refetchOnMount: false
-   // refetchInterval: 60000,
+    refetchInterval: 45000,
   });
 
-  const currentPrice = marketpair && marketpair[marketpair?.length-1]['rate_close'];
+  const pricePercentage =
+    marketpair &&
+    marketpair[0].price_change_percentage_1h_in_currency?.toFixed(3);
+  let lastUpdated = marketpair && marketpair[0].last_updated;
+  lastUpdated = new Date(lastUpdated).toLocaleTimeString();
+  const percentageColor =
+    pricePercentage < 0 ? "text-red-500" : "text-green-500";
 
   if (isLoading) {
     return <Loader />;
@@ -60,13 +54,38 @@ const MarketPairWidget = ({ baseAsset, quoteAsset }) => {
   }
 
   return (
-    <div className='mx-auto w-[90%] h-full'>
-      <h1 className="text-xl font-medium  text-left my-2">
-        Pair: <span className="font-semibold">{baseAsset} / {quoteAsset}</span> 
-      </h1>
-      <p className="text-lg text-left">Current Price: <span className="font-bold">{currentPrice}</span></p>
-      <div className="h-[500px]">
-      <MarketPairChart data={marketpair} />
+    <div className='mx-auto w-[95%] h-full'>
+      <div className='my-4 flex justify-between items-center'>
+        <div className='flex items-center gap-2 w-fit font-bold p-2'>
+          <Image
+            src={marketpair[0].image}
+            alt={marketpair[0].name}
+            width={24}
+            height={24}
+          />
+          <h1>{marketpair[0].name}</h1>
+        </div>
+
+        <div className='flex flex-col items-start gap-0.5 w-fit px-2'>
+          <p className='font-medium'>
+            Price:{" "}
+            <span className='font-semibold'>{marketpair[0].current_price}</span>
+          </p>
+          <p className='font-medium'>
+            Price In Last Hour:{" "}
+            <span
+              className={`${percentageColor} font-semibold`}>{`${pricePercentage}%`}</span>
+          </p>
+        </div>
+      </div>
+
+      <div className='h-[500px] max-md:h-[400px] my-6 mb-0'>
+        <MarketPairChart data={formatSparkline(marketpair)} />
+      </div>
+      <div className='my-3'>
+        <p className='text-sm font-medium text-right'>
+          last_updated: {lastUpdated}
+        </p>
       </div>
     </div>
   );
