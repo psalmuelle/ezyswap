@@ -36,8 +36,7 @@ const MarketPairWidget = ({ baseAsset, tabId }) => {
   const pricePercentage =
     marketpair &&
     marketpair[0].price_change_percentage_1h_in_currency?.toFixed(3);
-  let lastUpdated = marketpair && marketpair[0].last_updated;
-  lastUpdated = new Date(lastUpdated).toLocaleTimeString();
+  
   const percentageColor =
     pricePercentage < 0 ? "text-red-500" : "text-green-500";
 
