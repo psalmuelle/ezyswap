@@ -30,7 +30,7 @@ export default function MarketPairTab() {
 
   return (
     <div className='w-full max-w-3xl mx-auto rounded-xl overflow-hidden shadow-lg flex flex-col'>
-      <nav className='px-2 rounded-xl rounded-b-none border-b border-[#eee] py-2 overflow-scroll'>
+      <nav className='px-2 rounded-xl rounded-b-none border-b border-[#eee] py-2 overflow-auto'>
         <ul className='flex w-full list-none'>
           {pairs.map((item) => {
             return (
