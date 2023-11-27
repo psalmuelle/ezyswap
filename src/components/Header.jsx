@@ -44,13 +44,13 @@ const Header = () => {
       </a>
 
       <nav className='flex justify-between items-center max-w-xs w-full max-md:hidden'>
-        <a href={"#"} className='block hover:border-b'>
+        <a href={"#market-pair"} className='block hover:border-b'>
           Market Pairs
         </a>
-        <a href={"#"} className='block hover:border-b'>
+        <a href={"#converter"} className='block hover:border-b'>
           Exchange Rates
         </a>
-        <a href={"#"} className='block hover:border-b'>
+        <a href={"/"} className='block hover:border-b'>
           About
         </a>
       </nav>
@@ -97,13 +97,13 @@ const Header = () => {
               <p>Hey {user?.displayName}! 👋</p>
             </div>
           )}
-          <a href={"#"} className='block hover:border-b'>
+          <a href={"#market-pair"} className='block hover:border-b'>
             Market Pairs
           </a>
-          <a href={"#"} className='block hover:border-b'>
+          <a href={"#converter"} className='block hover:border-b'>
             Exchange Rates
           </a>
-          <a href={"#"} className='block hover:border-b'>
+          <a href={"/"} className='block hover:border-b'>
             About
           </a>
           {!user?.displayName && (

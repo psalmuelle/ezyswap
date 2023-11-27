@@ -28,7 +28,7 @@ function Home() {
           />
         </section>
         <hr />
-        <section className='py-10 mt-8 mx-auto text-center'>
+        <section className='py-10 mt-8 mx-auto text-center' id="market-pair">
           <hgroup className='mb-8 max-w-2xl mx-auto'>
             <h1 className='text-4xl font-bold'>
               Get Realtime Prices of Crypto Market Pairs
@@ -41,7 +41,7 @@ function Home() {
           <MarketPairTab />
         </section>
 
-        <section className='py-10  mx-auto text-center'>
+        <section className='py-10  mx-auto text-center' id="converter">
           <hgroup className='mb-8 max-w-2xl mx-auto'>
             <h1 className='text-4xl font-bold'>
               Convert Cryptocurrency to Fiat Currency
