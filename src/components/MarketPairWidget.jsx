@@ -82,11 +82,7 @@ const MarketPairWidget = ({ baseAsset, tabId }) => {
       <div className='h-[500px] max-md:h-[400px] my-6 mb-0'>
         <MarketPairChart data={formatSparkline(marketpair)} />
       </div>
-      <div className='my-3'>
-        <p className='text-sm font-medium text-right'>
-          last_updated: {lastUpdated}
-        </p>
-      </div>
+    
     </div>
   );
 };
